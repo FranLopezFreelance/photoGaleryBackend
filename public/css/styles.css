@@ -1,0 +1,61 @@
+body {
+   font-family: 'Lato';
+}
+
+.fa-btn {
+   margin-right: 6px;
+}
+
+th {
+	background: #ddd;
+}
+
+.sectionsUL, .subsectionsUL, .subsections2UL {
+	list-style: none;
+}
+
+.sectionsUL li  {
+	margin-top: 2px;
+	border: 1px solid silver;
+	padding: 8px;
+	background: #f7f7f7;
+	border-radius: 4px;
+}
+
+.open, .open2 {
+	cursor: pointer;
+}
+
+.sectionsUL li:hover {
+	background: #e7e7e7;
+}
+
+.subsectionsUL li {
+	background: #e7e7e7;
+}
+
+.subsectionsUL li:hover {
+	background: #d7d7d7;
+}
+
+.subsections2UL li {
+	background: #d7d7d7;
+}
+
+.subsections2UL li:hover {
+	background: #c7c7c7;
+}
+
+.actions {
+	display:  inline;
+	float: right;
+}
+ 
+.titleSectionBack {
+	display: inline;
+	margin-right: 15px;
+}
+
+.tag-view {
+	margin-right: 10px;
+}
