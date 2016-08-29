@@ -88,8 +88,10 @@ class SectionsController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id) {
-		//
+	public function edit(Section $section) {
+		$types    = Type::all();
+		$sections = Section::all()->sortBy('order');
+		return view('backend.section.edit', compact('types', 'sections', 'section'));
 	}
 
 	/**
@@ -99,8 +101,11 @@ class SectionsController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id) {
-		//
+	public function update(Request $request, Section $section) {
+		$section->update($request->all());
+		$sections = Section::all()->sortBy('order');
+		flash()->success('Bien!', 'La Seccion se modifico correctamente');
+		return redirect('/backend/section');
 	}
 
 	/**
