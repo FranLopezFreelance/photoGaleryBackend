@@ -13,9 +13,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css">
 
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/libs.css">
+
 
 </head>
 <body id="app-layout">
@@ -32,7 +35,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/backend') }}">
                     Gonza Backend
                 </a>
             </div>
@@ -48,8 +51,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/section/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
-                                <li><a href="/section/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
+                                <li><a href="/backend/section/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
+                                <li><a href="/backend/section/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
                             </ul>
                     </li>
                     <li class="dropdown">
@@ -58,8 +61,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/photo/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
-                                <li><a href="/photo/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
+                                <li><a href="/backend/photo/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
+                                <li><a href="/backend/photo/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
                             </ul>
                     </li>
                     <li class="dropdown">
@@ -68,8 +71,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/video/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
-                                <li><a href="/video/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
+                                <li><a href="/backend/video/"><i class="fa fa-btn fa-th-list"></i>Listado</a></li>
+                                <li><a href="/backend/video/create"><i class="fa fa-btn fa-upload"></i>Crear</a></li>
                             </ul>
                     </li>
                 </ul>
@@ -103,5 +106,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <script src="/js/scripts.js"></script>
+    <script src="/js/libs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
+
+    <!-- flash message layout  -->
+    @include('layouts.flash')
+
 </body>
 </html>

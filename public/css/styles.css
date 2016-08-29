@@ -22,6 +22,14 @@ th {
 	border-radius: 4px;
 }
 
+.edit {
+	margin-left: 15px;
+}
+
+.formDelete {
+	display: inline!important;
+}
+
 .open, .open2 {
 	cursor: pointer;
 }
@@ -58,4 +66,32 @@ th {
 
 .tag-view {
 	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.listElements {
+	margin-top: 15px;
+}
+
+.listElements li {
+	background: #fff!important;
+	opacity: 0.7;
+}
+
+.imagesPhoto {
+	margin: 5px;
+}
+
+.imgDelete {
+	position: absolute;
+	display: inline!important;
+	margin-left: -20px;
+	margin-top: 80px!important;
+}
+
+
+/* frontend */
+body, img, h1, h2 {
+	margin: 0px;
+	padding: 0px;
 }

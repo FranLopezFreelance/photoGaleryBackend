@@ -15,22 +15,42 @@
 							<h4 class="titleSectionBack">{{ $section->name }}</h4>
 										@if($section->type_view == 1
 										&& ($section->type_id == 1 || $section->type_id == 3))
-											<a href="/photo/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nueva Galería</a>
+											<a href="/backend/photo/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nueva Galería</a>
 										@elseif($section->type_view == 2
 										&& ($section->type_id == 1 || $section->type_id == 3))
-											<a href="/video/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nuevo Video</a>
+											<a href="/backend/video/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nuevo Video</a>
 										@endif
 							@if($section->type->childs == 1)
 								({{ $section->subsections()->count() }})
+								<a href="/backend/section/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nueva Sección</a>
 							@endif
 							<div class="actions">
-								<a class="btn btn-primary btn-xs" href="/section/{{ $section->id }}/edit">
+								<a class="btn btn-primary btn-xs" href="/backend/section/{{ $section->id }}/edit">
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>
-								<a class="btn btn-danger btn-xs" href="/section/{{ $section->id }}">
-									<i class="glyphicon glyphicon-trash"></i>
-								</a>
+								{{ Form::open(array('url' => 'backend/section/' . $section->id, 'class' => 'formDelete')) }}
+
+									{{ Form::hidden('_method', 'DELETE') }}
+
+									<button type="submit" class="btn btn-danger btn-xs">
+										<i class="glyphicon glyphicon-trash"></i>
+									</button>
+
+								{{ Form::close() }}
 							</div>
+
+							{{-- Lista de elementos creados en la seccion --}}
+							<ul class="listElements">
+							@foreach($section->photos as $photo)
+								<li><a href="/backend/photo/{{ $photo->id }}">{{ $photo->name }}</a></li>
+							@endforeach
+							</ul>
+
+							<ul class="listElements">
+							@foreach($section->videos as $video)
+								<li><a href="/backend/video/{{ $video->id }}">{{ $video->name }}</a></li>
+							@endforeach
+							</ul>
 						</li>
 						@if($section->type->childs == 1)
 							<ul style="display:none" class="subsectionsUL">
@@ -43,22 +63,44 @@
 									<h4 class="titleSectionBack">{{ $section->name }}</h4>
 										@if($section->type_view == 1
 										&& ($section->type_id == 1 || $section->type_id == 3))
-											<a href="/photo/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nueva Galería</a>
+											<a href="/backend/photo/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nueva Galería</a>
 										@elseif($section->type_view == 2
 										&& ($section->type_id == 1 || $section->type_id == 3))
-											<a href="/video/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nuevo Video</a>
+											<a href="/backend/video/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nuevo Video</a>
 										@endif
 									@if($section->type->childs == 1)
 										({{ $section->subsections()->count() }})
+										<a href="/backend/section/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nueva Sección</a>
 									@endif
 									<div class="actions">
-										<a class="btn btn-primary btn-xs" href="/section/{{ $section->id }}/edit">
+										<a class="btn btn-primary btn-xs" href="/backend/section/{{ $section->id }}/edit">
 											<i class="glyphicon glyphicon-pencil"></i>
 										</a>
-										<a class="btn btn-danger btn-xs" href="/section/{{ $section->id }}">
-											<i class="glyphicon glyphicon-trash"></i>
-										</a>
+										{{ Form::open(array('url' => 'backend/section/' . $section->id, 'class' => 'formDelete')) }}
+
+											{{ Form::hidden('_method', 'DELETE') }}
+
+											<td>
+												<button type="submit" class="btn btn-danger btn-xs">
+													<i class="glyphicon glyphicon-trash"></i>
+												</button>
+											</td>
+
+										{{ Form::close() }}
 									</div>
+
+									{{-- Lista de elementos creados en la seccion --}}
+									<ul class="listElements">
+									@foreach($section->photos as $photo)
+										<li><a href="/backend/photo/{{ $photo->id }}">{{ $photo->name }}</a></li>
+									@endforeach
+									</ul>
+
+									<ul class="listElements">
+									@foreach($section->videos as $video)
+										<li><a href="/backend/video/{{ $video->id }}">{{ $video->name }}</a></li>
+									@endforeach
+									</ul>
 								</li>
 								@if($section->type->childs == 1)
 									<ul style="display:none" class="subsections2UL">
@@ -67,19 +109,40 @@
 											<h4 class="titleSectionBack">{{ $section->name }}</h4>
 												@if($section->type_view == 1
 												&& ($section->type_id == 1 || $section->type_id == 3))
-													<a href="/photo/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nueva Galería</a>
+													<a href="/backend/photo/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nueva Galería</a>
 												@elseif($section->type_view == 2
 												&& ($section->type_id == 1 || $section->type_id == 3))
-													<a href="/video/create/{{ $section->id }}" class="btn-warning btn-xs tag-view">Nuevo Video</a>
+													<a href="/backend/video/create/{{ $section->id }}" class="btn-success btn-xs tag-view">Nuevo Video</a>
 												@endif
 											<div class="actions">
-												<a class="btn btn-primary btn-xs" href="/section/{{ $section->id }}/edit">
+												<a class="btn btn-primary btn-xs" href="/backend/section/{{ $section->id }}/edit">
 													<i class="glyphicon glyphicon-pencil"></i>
 												</a>
-												<a class="btn btn-danger btn-xs" href="/section/{{ $section->id }}">
-													<i class="glyphicon glyphicon-trash"></i>
-												</a>
+												{{ Form::open(array('url' => 'backend/section/' . $section->id, 'class' => 'formDelete')) }}
+
+													{{ Form::hidden('_method', 'DELETE') }}
+
+													<td>
+														<button type="submit" class="btn btn-danger btn-xs">
+															<i class="glyphicon glyphicon-trash"></i>
+														</button>
+													</td>
+
+												{{ Form::close() }}
 											</div>
+
+											{{-- Lista de elementos creados en la seccion --}}
+											<ul class="listElements">
+											@foreach($section->photos as $photo)
+												<li><a href="/backend/photo/{{ $photo->id }}">{{ $photo->name }}</a></li>
+											@endforeach
+											</ul>
+
+											<ul class="listElements">
+											@foreach($section->videos as $video)
+												<li><a href="/backend/video/{{ $video->id }}">{{ $video->name }}</a></li>
+											@endforeach
+											</ul>
 										</li>
 									@endforeach
 									</ul>

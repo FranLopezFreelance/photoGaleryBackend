@@ -8,7 +8,7 @@
                 <div class="panel-heading">Nuevo Video</div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="/video">
+                    <form class="form-horizontal" role="form" method="POST" action="/backend/video">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -99,14 +99,16 @@
                                         <option value="0">Seleccionar... </option>
 
                                         @foreach($sections as $section)
-                                            <option  value="{{ $section->id }}"
+                                            @if($section->type_id == 1 && $section->type_view == 2 || $section->type_id == 3 && $section->type_view == 2)
+                                                <option  value="{{ $section->id }}"
 
-                                                @if($section->id == old('section_id'))
-                                                    selected
-                                                @endif
-                                            >
-                                                {{ $section->name }}
-                                            </option>
+                                                    @if($section->id == old('section_id'))
+                                                        selected
+                                                    @endif
+                                                >
+                                                    {{ $section->name }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>

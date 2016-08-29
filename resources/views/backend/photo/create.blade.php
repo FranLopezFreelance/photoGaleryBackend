@@ -5,10 +5,17 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nueva Galería de Fotos</div>
+                <div class="panel-heading">
+                    @if(isset($section))
+                        {{ $section->name }} /
+                    @endif
+
+                    Nueva Galería de Fotos
+
+                </div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="/photo">
+                    <form class="form-horizontal" role="form" method="POST" action="/backend/photo">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -51,14 +58,16 @@
                                     <option value="0">Seleccionar... </option>
 
                                     @foreach($sections as $section)
-                                        <option  value="{{ $section->id }}"
+                                        @if($section->type_id == 1 && $section->type_view == 1 || $section->type_id == 3 && $section->type_view == 1)
+                                            <option  value="{{ $section->id }}"
 
-                                            @if($section->id == old('section_id'))
-                                                selected
-                                            @endif
-                                        >
-                                            {{ $section->name }}
-                                        </option>
+                                                @if($section->id == old('section_id'))
+                                                    selected
+                                                @endif
+                                            >
+                                                {{ $section->name }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 @endif
                                 </select>

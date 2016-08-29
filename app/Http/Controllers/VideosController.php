@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Section;
 use App\Video;
 use Illuminate\Http\Request;
-
 use Validator;
 
 class VideosController extends Controller {
@@ -67,7 +66,8 @@ class VideosController extends Controller {
 	 */
 	public function store(Request $request) {
 		Video::create($request->all());
-		return redirect('/video')->with('msg', 'El video se subió correctamente');
+		flash()->success('Bien!', 'El Video se creo correctamente');
+		return redirect('/backend/video');
 	}
 
 	/**
@@ -76,8 +76,8 @@ class VideosController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
-		return view('backend.video.show');
+	public function show(Video $video) {
+		return view('backend.video.show', compact('video'));
 	}
 
 	/**
@@ -108,7 +108,9 @@ class VideosController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id) {
-		//
+	public function destroy(Video $video) {
+		flash()->success('Listo!', 'El Video se elimino correctamente.');
+		$video->delete();
+		return redirect('/backend/video');
 	}
 }

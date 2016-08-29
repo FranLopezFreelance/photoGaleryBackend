@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Section;
 use App\Type;
 use Illuminate\Http\Request;
-
 use Validator;
 
 class SectionsController extends Controller {
@@ -51,6 +50,17 @@ class SectionsController extends Controller {
 	}
 
 	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function createBySection(Section $section) {
+		$types    = Type::all();
+		$sections = Section::all()->sortBy('order');
+		return view('backend.section.create', compact('section', 'types', 'sections'));
+	}
+
+	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -58,7 +68,8 @@ class SectionsController extends Controller {
 	 */
 	public function store(Request $request) {
 		Section::create($request->all());
-		return redirect('/section')->with('msg', 'La sección se creó correctamente.');
+		flash()->success('Bien!', 'La Seccion se creo correctamente');
+		return redirect('/backend/section');
 	}
 
 	/**
@@ -98,7 +109,9 @@ class SectionsController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id) {
-		//
+	public function destroy(Section $section) {
+		flash()->success('Listo!', 'La Seccion se elimino correctamente.');
+		$section->delete();
+		return redirect('/backend/section');
 	}
 }

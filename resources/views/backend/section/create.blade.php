@@ -5,10 +5,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nueva Seccion</div>
+                <div class="panel-heading">
+                    @if(isset($section))
+                        {{ $section->name }} /
+                    @endif
+
+                    Nueva Seccion
+                </div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="/section">
+                    <form class="form-horizontal" role="form" method="POST" action="/backend/section">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -33,14 +39,27 @@
                                     <option value="0">Seleccionar... </option>
 
                                     @foreach($types as $type)
-                                        <option  value="{{ $type->id }}"
+                                        @if(isset($section))
+                                            @if($type->id > 2)
+                                                <option  value="{{ $type->id }}"
 
-                                            @if($type->id == old('type_id'))
-                                                selected
+                                                    @if($type->id == old('type_id'))
+                                                        selected
+                                                    @endif
+                                                >
+                                                    {{ $type->name }}
+                                                </option>
                                             @endif
-                                        >
-                                            {{ $type->name }}
-                                        </option>
+                                        @else
+                                            <option  value="{{ $type->id }}"
+
+                                                @if($type->id == old('type_id'))
+                                                    selected
+                                                @endif
+                                            >
+                                                {{ $type->name }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
 
@@ -91,20 +110,25 @@
 
                             <div class="col-md-7">
                                 <select class="form-control" id="section_id" name="section_id">
-                                    <option value="0">Seleccionar... </option>
 
-                                    @foreach($sections as $section)
-                                        @if($section->type->childs == 1)
-                                            <option  value="{{ $section->id }}"
+                                    @if(isset($section))
+                                        <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                    @else
+                                        <option value="0">Seleccionar... </option>
 
-                                                @if($section->id == old('section_id'))
-                                                    selected
-                                                @endif
-                                            >
-                                                {{ $section->name }}
-                                            </option>
-                                        @endif
-                                    @endforeach
+                                        @foreach($sections as $section)
+                                            @if($section->type->childs == 1)
+                                                <option  value="{{ $section->id }}"
+
+                                                    @if($section->id == old('section_id'))
+                                                        selected
+                                                    @endif
+                                                >
+                                                    {{ $section->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </select>
 
                                 @if ($errors->has('section_id'))

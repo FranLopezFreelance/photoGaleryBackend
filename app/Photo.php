@@ -18,4 +18,13 @@ class Photo extends Model {
 	public function section() {
 		return $this->belongsTo(Section::class );
 	}
+
+	/**
+	 * Photo has many Images.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function images() {
+		return $this->hasMany(Image::class );
+	}
 }
