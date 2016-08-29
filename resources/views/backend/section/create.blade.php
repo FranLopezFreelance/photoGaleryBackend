@@ -71,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('type_view') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('type_view') ? ' has-error' : '' }} type_view">
                             <label for="type_view" class="col-md-3 control-label">Tipo de Vista</label>
 
                             <div class="col-md-7">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }} section_id">
                             <label for="section_id" class="col-md-3 control-label">Sección Madre</label>
 
                             <div class="col-md-7">

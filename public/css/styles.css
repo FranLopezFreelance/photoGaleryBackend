@@ -89,6 +89,14 @@ th {
 	margin-top: 80px!important;
 }
 
+.type_view {
+	display: none;
+}
+
+.section_id {
+	display: none;
+}
+
 
 /* frontend */
 body, img, h1, h2 {
